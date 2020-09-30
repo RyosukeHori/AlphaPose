@@ -10,6 +10,7 @@ import torch
 from tqdm import tqdm
 import natsort
 
+from alphapose.utils.file_detector import FileDetectionLoader
 from detector.apis import get_detector
 from trackers.tracker_api import Tracker
 from trackers.tracker_cfg import cfg as tcfg

@@ -112,6 +112,8 @@ def make_cuda_ext(name, module, sources):
                 '-D__CUDA_NO_HALF_OPERATORS__',
                 '-D__CUDA_NO_HALF_CONVERSIONS__',
                 '-D__CUDA_NO_HALF2_OPERATORS__',
+                '-DCUDA_HOST_COMPILER=/usr/bin/gcc-5',
+                '-ccbin=/usr/bin/gcc'
             ]
         })
 
@@ -181,6 +183,8 @@ def is_installed(package_name):
 
 if __name__ == '__main__':
     write_version_py()
+    os.environ['CUDAHOSTCXX']="/usr/bin/gcc-5"
+    #os.environ['CXX'] = 'g++-5.5'
     setup(
         name='alphapose',
         version=get_version(),
