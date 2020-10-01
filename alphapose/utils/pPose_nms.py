@@ -531,6 +531,7 @@ def write_json(all_results, outputpath, form=None, for_eval=False):
                     tmp['pose_keypoints_2d'].append(result['keypoints'][i+1])
                     tmp['pose_keypoints_2d'].append(result['keypoints'][i+2])
                 json_results_cmu[result['image_id']]['people'].append(tmp)
+                json_results_cmu[result['image_id']]['people'].append(result['idx'])
             else:
                 json_results.append(result)
 
