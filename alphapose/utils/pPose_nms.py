@@ -521,7 +521,8 @@ def write_json(all_results, outputpath, form=None, for_eval=False):
                     json_results_cmu[result['image_id']]={}
                     json_results_cmu[result['image_id']]['version']="AlphaPose v0.3"
                     json_results_cmu[result['image_id']]['people']=[]
-                tmp={'pose_keypoints_2d':[]}
+                tmp={'idx':[], 'pose_keypoints_2d':[]}
+                tmp['idx'].append(result['idx'])
                 result['keypoints'].append((result['keypoints'][15]+result['keypoints'][18])/2)
                 result['keypoints'].append((result['keypoints'][16]+result['keypoints'][19])/2)
                 result['keypoints'].append((result['keypoints'][17]+result['keypoints'][20])/2)
@@ -531,7 +532,6 @@ def write_json(all_results, outputpath, form=None, for_eval=False):
                     tmp['pose_keypoints_2d'].append(result['keypoints'][i+1])
                     tmp['pose_keypoints_2d'].append(result['keypoints'][i+2])
                 json_results_cmu[result['image_id']]['people'].append(tmp)
-                json_results_cmu[result['image_id']]['people'].append(result['idx'])
             else:
                 json_results.append(result)
 
