@@ -80,6 +80,8 @@ class DataWriter():
         while True:
             # ensure the queue is not empty and get item
             (boxes, scores, ids, hm_data, cropped_boxes, orig_img, im_name) = self.wait_and_get(self.result_queue)
+            im_split = im_name.split('.')
+            im_name = im_split[0].zfill(6) + '.' + im_split[1]
             if orig_img is None:
                 # if the thread indicator variable is set (img is None), stop the thread
                 if self.save_video:
@@ -125,9 +127,9 @@ class DataWriter():
                             'bbox':[boxes[k][0], boxes[k][1], boxes[k][2]-boxes[k][0],boxes[k][3]-boxes[k][1]] 
                         }
                     )
-                im_split = im_name.split('.')
+
                 result = {
-                    'imgname': im_split[0].zfill(6) + '.' + im_split[1],
+                    'imgname': im_name,
                     'result': _result
                 }
 
