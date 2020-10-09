@@ -125,9 +125,9 @@ class DataWriter():
                             'bbox':[boxes[k][0], boxes[k][1], boxes[k][2]-boxes[k][0],boxes[k][3]-boxes[k][1]] 
                         }
                     )
-
+                im_split = im_name.split('.')
                 result = {
-                    'imgname': im_name,
+                    'imgname': im_split[0].zfill(6) + '.' + im_split[1],
                     'result': _result
                 }
 
