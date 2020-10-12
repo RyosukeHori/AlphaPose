@@ -80,8 +80,7 @@ class DataWriter():
         while True:
             # ensure the queue is not empty and get item
             (boxes, scores, ids, hm_data, cropped_boxes, orig_img, im_name) = self.wait_and_get(self.result_queue)
-            im_split = im_name.split('.')
-            im_name = im_split[0].zfill(6) + '.' + im_split[1]
+
             if orig_img is None:
                 # if the thread indicator variable is set (img is None), stop the thread
                 if self.save_video:
@@ -89,6 +88,8 @@ class DataWriter():
                 write_json(final_result, self.opt.outputpath, form=self.opt.format, for_eval=self.opt.eval)
                 print("Results have been written to json.")
                 return
+            im_split = im_name.split('.')
+            im_name = im_split[0].zfill(6) + '.' + im_split[1]
             # image channel RGB->BGR
             orig_img = np.array(orig_img, dtype=np.uint8)[:, :, ::-1]
             if boxes is None or len(boxes) == 0:

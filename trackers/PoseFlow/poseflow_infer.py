@@ -123,10 +123,10 @@ class PoseFlowWrapper():
             return self.final_result_by_name(frame_name)
 
         frame_id_list = sorted([(int(os.path.splitext(i)[0]), os.path.splitext(i)[1]) for i in self.track.keys()])
-        frame_list = [ "".join([str(i[0]), i[1]]) for i in frame_id_list]
+        frame_list = [ "".join([str(i[0]).zfill(6), i[1]]) for i in frame_id_list]
         prev_frame_name = frame_list[-2]
-        prev_name_split = prev_frame_name.split('.')
-        prev_frame_name= prev_name_split[0].zfill(6) + '.' + prev_name_split[1]
+        #prev_name_split = prev_frame_name.split('.')
+        #prev_frame_name= prev_name_split[0].zfill(6) + '.' + prev_name_split[1]
         prev_frame_id = prev_frame_name.split(".")[0]
         frame_new_pids = []
 
