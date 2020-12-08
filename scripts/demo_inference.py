@@ -272,10 +272,7 @@ if __name__ == "__main__":
         while(writer.running()):
             time.sleep(1)
             print('===========================> Rendering remaining ' + str(writer.count()) + ' images in the queue...')
-        time.sleep(2)
-        while (writer.running()):
-            time.sleep(1)
-            print('===========================> Rendering remaining ' + str(writer.count()) + ' images in the queue...')
+        print("stop!")
         writer.stop()
         det_loader.stop()
     except Exception as e:
