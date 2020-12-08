@@ -172,7 +172,8 @@ class DataWriter():
 
     def running(self):
         # indicate that the thread is still running
-        return not self.result_queue.empty()
+        #return not self.result_queue.empty()
+        return not self.result_queue.qsize == 0
 
     def count(self):
         # indicate the remaining images
