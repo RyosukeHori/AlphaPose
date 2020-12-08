@@ -81,7 +81,7 @@ class DataWriter():
             # ensure the queue is not empty and get item
             (boxes, scores, ids, hm_data, cropped_boxes, orig_img, im_name) = self.wait_and_get(self.result_queue)
 
-            if orig_img is None:
+            if orig_img is None or self.result_queue.empty():
                 # if the thread indicator variable is set (img is None), stop the thread
                 if self.save_video:
                     stream.release()
